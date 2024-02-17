@@ -1,7 +1,10 @@
+package numbers
+
 import kotlin.random.Random
 
 
 fun main(args: Array<String>) {
+    println("Random numbers")
 
     // Random number between 0 and 10
     println(Random.nextInt(10))
