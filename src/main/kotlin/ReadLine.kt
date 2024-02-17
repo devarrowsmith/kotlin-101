@@ -1,3 +1,5 @@
+import java.time.Year
+
 fun main(args: Array<String>) {
     println("What is your name? Please type it in.")
 
@@ -8,12 +10,18 @@ fun main(args: Array<String>) {
     println("I can do mathematics.")
     println("Please enter an integer. I will square it.")
 
-    val userInteger = readLine()?:"0"
-    val squareOfUserInteger = userInteger.toInt() * userInteger.toInt()
+    val userInteger = (readLine()?:"0").toInt()
+    val squareOfUserInteger = userInteger * userInteger
 
+    // In the templates below, type coercion converts squareOfUserInteger to a string
     println("You entered $userInteger.")
-
-    // In the template below, type coercion converts squareOfUserInteger to a string
     println("$userInteger squared is $squareOfUserInteger.")
 
+    println("In what year were you born?")
+
+    val userBirthYear = (readLine()?:"0").toInt()
+    val userApproximateAge = Year.now().value - userBirthYear.toInt()
+
+    println("You entered $userBirthYear.")
+    println("That means you are approximately $userApproximateAge years old.")
 }
