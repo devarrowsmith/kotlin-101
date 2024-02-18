@@ -4,7 +4,7 @@ fun main(args: Array<String>) {
 
     println("Number Types")
 
-    println("Automatically assigned number types")
+    println("Implicit Types")
 
     //Kotlin assigns number types according to their memory requirements.
 
@@ -44,7 +44,7 @@ fun main(args: Array<String>) {
     println(doubleExample::class.java)
 
 
-    println("Explicitly assigned number types")
+    println("Explicit types")
 
     val oneAuto = 1 // Int (automatically assigned)
     println(oneAuto::class.java)
@@ -64,13 +64,13 @@ fun main(args: Array<String>) {
 
     // When two numbers of different types are operated on, kotlin will try to choose an inherited type suitable for the new value.
     val longNumber = 400000000000000
-    println(longNumber ::class.java) // long
+    println(longNumber::class.java) // long
     val shortNumber = 1
-    println(shortNumber ::class.java) // int
+    println(shortNumber::class.java) // int
 
     val product = longNumber * shortNumber
     println(product)
-    println(product ::class.java) // Inherits type `long` because `ìnt` is too small for this large value.
+    println(product::class.java) // Inherits type `long` because `ìnt` is too small for this large value.
 
 
     println("Overflow")
@@ -85,7 +85,49 @@ fun main(args: Array<String>) {
     // The int type is inherited from largeInt.
     // However, this value exceeds the int limit of 2147483647, so overflow occurs.
     println(doubleLargeInt) // Due to overflow, doubleLargeInt is -294967296
-    println(doubleLargeInt ::class.java)
+    println(doubleLargeInt::class.java)
+
+
+    println("Type Conversion")
+
+    // We can use a function on a variable to return its value, but with a different type.
+
+    val numberOfCats = 2000000000 // Close to the int limit of 2147483647
+    println(numberOfCats) // = 200000000
+    println(numberOfCats::class.java) // int
+
+    val longNumberOfCats = numberOfCats.toLong() // = 200000000
+    println(longNumberOfCats) // = 200000000
+    println(longNumberOfCats::class.java) // long
+
+    // We can use type conversion to prevent overflow.
+    // By first creating a variable with the same value but a more suitable type,
+    // we can safely double numberOfCats to a value outside of int range, but within long range
+    val doubleNumberOfCats = numberOfCats.toLong() * 2
+    println(doubleNumberOfCats) // = 400000000
+    println(doubleNumberOfCats::class.java) // long
+
+    // Warning! Converting to a type with a lower range can cause data corruption.
+    val numberOfDogs = 300
+    println(numberOfDogs) // = 300
+    println(numberOfDogs::class.java) // int
+
+    val byteNumberOfDogs = numberOfDogs.toByte()
+    println(byteNumberOfDogs) // = 44
+    println(byteNumberOfDogs::class.java) // byte
+
+
+    // Numbers can be converted to strings
+    val pi = 3.1415
+    println(pi) // 3.1415
+    println(pi::class.java) // double
+
+    val stringPi = pi.toString()
+    println(stringPi) // 3.1415
+    println(stringPi::class.java) // class java.lang.String
+
+
+
 
 
 }
