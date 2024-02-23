@@ -1,4 +1,4 @@
-package collections
+package collections.list
 
 fun main(args: Array<String>) {
 // List //////////
