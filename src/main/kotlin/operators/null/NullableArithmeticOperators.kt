@@ -1,4 +1,4 @@
-package operators
+package operators.`null`
 
 fun main(args: Array<String>) {
 
@@ -39,6 +39,7 @@ fun main(args: Array<String>) {
     val nullModulo = b?.rem(7)
     println(nullModulo)
 
-    // Be wary of type / overflow when numerical ranges increase.
-
+    println("Please enter a number between 1 and 1000. I will multiply it by 7.")
+    val userNumber: Double? = readLine()?.toDouble()
+    println(userNumber?.times(7).toString())
 }

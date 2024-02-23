@@ -32,4 +32,16 @@ fun main(args: Array<String>) {
     // If a variable is of a given type,
     // and an assignment operator produces a different type (eg. a float)
     // then an error will occur
+
+    // Elvis operator
+    // Conditional. If the return value is null, it instead returns the defined default value.
+
+    var numberOfEggs:String? = null
+    fun eggsStatement(): String {
+        return "There are ${numberOfEggs?:"no"} eggs."
+    }
+    println(eggsStatement()) // There are no eggs
+
+    numberOfEggs = "twelve"
+    println(eggsStatement()) // There are twelve eggs
 }
