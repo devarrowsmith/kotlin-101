@@ -1,4 +1,4 @@
-package Operators
+package operators
 
 fun main(args: Array<String>) {
     /*
